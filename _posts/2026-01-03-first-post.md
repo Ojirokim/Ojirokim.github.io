@@ -1,6 +1,6 @@
 ---
 title: "First Post"
-date: 2026-01-04
+date: 2026-01-03
 categories: [코드-기술력-자료]
 ---
 
