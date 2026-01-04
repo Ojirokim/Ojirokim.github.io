@@ -1,6 +1,6 @@
 ---
 title: "Programming SQL Practice – Day 1 (15 Problems)"
-date: 2026-01-03
+date: 2026-01-05
 categories: [코드-기술력-자료]
 tags: [sql, programmers, daily-practice]
 ---
@@ -214,6 +214,100 @@ ORDER BY  YEAR,MONTH, GENDER
 - Always check whether the problem wants “events” or “people”
 
 
+## Problem 61 — 서울에 위치한 식당 목록 출력하기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/131118
+**Difficulty:** Level 4
+
+```sql
+SELECT RI.REST_ID, REST_NAME, FOOD_TYPE, FAVORITES, ADDRESS, SCORE
+FROM REST_INFO RI
+JOIN (
+SELECT REST_ID, ROUND(AVG(REVIEW_SCORE),2) SCORE
+FROM REST_REVIEW
+GROUP BY REST_ID
+) BB
+ON RI.REST_ID= BB.REST_ID
+WHERE ADDRESS LIKE '서울%'
+ORDER BY SCORE DESC, FAVORITES DESC
+```
+
+**Key Point**
+- `LIKE '%서울%'` and `LIKE '서울%'` have very different meanings
+- Small pattern differences can cause wrong answers
 
 
+## Problem  62— 자동차 대여 기록에서 장기/단기 대여 구분하기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/151138
+**Difficulty:** Level 4
 
+```sql
+SELECT HISTORY_ID, CAR_ID, DATE_FORMAT(START_DATE,'%Y-%m-%d') START_DATE, DATE_FORMAT(END_DATE,'%Y-%m-%d') END_DATE, CASE WHEN DATEDIFF(END_DATE,START_DATE)+1>=30 THEN '장기 대여'
+ELSE '단기 대여' END RENT_TYPE
+FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+WHERE DATE_FORMAT(START_DATE,'%Y-%m-%d') BETWEEN '2022-09-01' and '2022-09-30'
+ORDER BY HISTORY_ID DESC
+```
+
+**Key Point**
+- `DATE_FORMAT()` is for display, not calculation
+- `DATEDIFF()` is the safest way to compare durations
+- `DATEDIFF()` excludes the start date
+- Add `+ 1` when calculating inclusive durations
+
+
+## Problem 63 — 자동차 평균 대여 기간 구하기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/157342
+**Difficulty:** Level 4
+
+```sql
+SELECT CAR_ID, AVERAGE_DURATION
+FROM (
+SELECT CAR_ID,ROUND(AVG(DATEDIFF(END_DATE, START_DATE))+1,1) AVERAGE_DURATION
+FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+GROUP BY CAR_ID
+) BB
+WHERE AVERAGE_DURATION>=7
+ORDER BY AVERAGE_DURATION DESC, CAR_ID DESC;
+```
+
+**Key Point**
+- `DATEDIFF()` excludes the start date
+- Add `+ 1` when calculating inclusive durations
+
+## Problem 64 — 헤비 유저가 소유한 장소
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/77487
+**Difficulty:** Level 4
+
+```sql
+SELECT ID, NAME,HOST_ID
+FROM (
+SELECT ID, NAME, HOST_ID, COUNT(HOST_ID)OVER(PARTITION BY HOST_ID) COUNT
+FROM PLACES
+) BB
+WHERE COUNT >=2
+ORDER BY ID
+```
+
+**Key Point**
+- In order to preserve the lines I used Window Function
+- Instead of Group by, which folds the groups.
+
+## Problem 65 — 우유와 요거트가 담긴 장바구니
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/62284
+**Difficulty:** Level 4
+
+```sql
+SELECT DISTINCT CART_ID
+FROM CART_PRODUCTS
+WHERE CART_ID IN
+(SELECT CART_ID FROM CART_PRODUCTS
+WHERE NAME ='Milk')
+AND CART_ID IN
+(SELECT CART_ID FROM CART_PRODUCTS
+WHERE NAME ='Yogurt')
+ORDER BY CART_ID
+```
+
+**Key Point**
+- Use IN() to make a list where I can reference the CART_ID
+- DISTINCT TO MAKE CART_ID DISTINCT in the result
