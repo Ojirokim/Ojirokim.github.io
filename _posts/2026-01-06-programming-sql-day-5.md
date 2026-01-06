@@ -1,5 +1,5 @@
 ---
-title: "Programming SQL Practice – Day 4 (10 Problems)"
+title: "Programming SQL Practice – Day 5 (10 Problems)"
 date: 2026-01-06
 categories: [코드-기술력-자료]
 tags: [sql, programmers, daily-practice]
