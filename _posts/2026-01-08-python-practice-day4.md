@@ -12,18 +12,51 @@ tags: [python, daily-practice]
 
 ---
 
-## Problem 11 — 짝수와 홀수
+## Problem 16 — x만큼 간격이 있는 n개의 숫자
 🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12937
 **Difficulty:** Easy
 
 ```python
-def solution(num):
-    if num%2==0:
-        answer = 'Even'
-    else:
-        answer = 'Odd'
+def solution(x, n):
+    answert = []
+    n = int(n)
+    for i in range(1,n+1):
+        answert.append(i)
+    answer = [int(a)*x for a in answert ]
     return answer
 ```
 **Key Point**
-- Divide by 2 to check if even or odd
+- Used for loop to generate a list and multiply each element by x
+
+
+## Problem 17 — 자연수 뒤집어 배열로 만들기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12932
+**Difficulty:** Easy
+
+```python
+def solution(n):
+    digits = []
+    for x in str(n):
+        digits.append(int(x))
+    digits.reverse()
+    return digits
+```
+**Key Point**
+- for loop to generate a list and reverse it with reverse() method
+
+
+## Problem 18 — 자연수 뒤집어 배열로 만들기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12932
+**Difficulty:** Easy
+
+```python
+def solution(n):
+    digits = []
+    for x in str(n):
+        digits.append(int(x))
+    digits.reverse()
+    return digits
+```
+**Key Point**
+- for loop to generate a list and reverse it with reverse() method
 
