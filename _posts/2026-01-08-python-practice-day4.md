@@ -45,18 +45,52 @@ def solution(n):
 - for loop to generate a list and reverse it with reverse() method
 
 
-## Problem 18 — 자연수 뒤집어 배열로 만들기
-🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12932
+## Problem 18 — 문자열을 정수로 바꾸기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12925
+**Difficulty:** Easy
+
+```python
+def solution(s):
+    answer = int(s)
+    return answer
+```
+**Key Point**
+- used int() method to convert string to integer
+
+
+## Problem 19 — 문자열을 정수로 바꾸기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12925
 **Difficulty:** Easy
 
 ```python
 def solution(n):
-    digits = []
-    for x in str(n):
-        digits.append(int(x))
-    digits.reverse()
-    return digits
+    x=1
+    while n>=x**2 >0:
+        if n ==x**2:
+            answer = (x+1)**2
+            break
+        else:
+            answer = -1
+            x+=1
+    return answer
 ```
 **Key Point**
-- for loop to generate a list and reverse it with reverse() method
+- used while loop to compare the square of x with n
+
+
+## Problem 20 - 정수 내림차순으로 배치하기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12933
+**Difficulty:** Easy
+
+```python
+def solution(n):
+    x=sorted(list(str(n)))[::-1]
+    result = [int(y) for y in x]
+    number = 0
+    for d in result:
+        number = number * 10 + d
+    return number
+```
+**Key Point**
+- used for loop to generate a number using digits inside a list.
 
