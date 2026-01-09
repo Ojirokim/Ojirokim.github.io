@@ -184,7 +184,7 @@ order by percentage desc, contest_id
 ```sql
 Select AA.query_name, quality, poor_query_percentage
 from
-(Select query_name, round(sum(rating/position)/3,2) quality
+(Select query_name, round(sum((rating/position))/COUNT(*),2) quality
 from Queries
 group by query_name
 ) AA
