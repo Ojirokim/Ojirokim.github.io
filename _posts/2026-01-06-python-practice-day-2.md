@@ -1,5 +1,5 @@
 ---
-title: "Python Practice – Day 1 (5 Problems)"
+title: "Python Practice – Day 2 (5 Problems)"
 date: 2026-01-06
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
