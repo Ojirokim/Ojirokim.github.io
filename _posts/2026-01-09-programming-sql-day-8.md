@@ -99,10 +99,19 @@ GROUP BY TEACHER_ID
 **Difficulty:** Level 6
 
 ```sql
-
+select Activity_date day, count(*) active_users
+from
+(
+SELECT USER_ID,activity_Date
+FROM ACTIVITY
+WHERE ACTIVITY_DATE<='2019-07-27'
+AND ACTIVITY_DATE>= '2019-06-28'
+group by 1,2
+) AA
+Group by 1
 ```
 **Key Point**
-- 
+- I had to group two times because I wanted to count the number of active users for each day.
 
 
 ## Problem 101 — Product Sales Analysis III
