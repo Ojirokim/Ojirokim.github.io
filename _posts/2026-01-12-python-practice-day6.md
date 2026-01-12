@@ -1,12 +1,12 @@
 ---
-title: "Python Practice – Day 6 (5 Problems)"
+title: "Python Practice – Day 6 (10 Problems)"
 date: 2026-01-12
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
 ---
 
 ## 📅 Today’s Goal
-- Solve 5 Python problems
+- Solve 10 Python problems
 - Focus on correctness + clean structure
 - Write 1 key takeaway per problem
 
