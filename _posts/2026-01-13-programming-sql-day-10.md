@@ -70,7 +70,6 @@ FROM SUBANG
 WHERE IFNULL(CNT, 0) + IFNULL(CNTA, 0)=
 (SELECT MAX(IFNULL(CNT, 0) + IFNULL(CNTA, 0))
 FROM SUBANG)
-
 ```
 **Key Point**
 - Very important part of this code was to understand the ways how window function works.
