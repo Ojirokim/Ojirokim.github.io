@@ -12,122 +12,95 @@ tags: [python, daily-practice]
 
 ---
 
-## Problem 41 — 이상한 문자 만들기
-🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12930
+## Problem 46 — 숫자 문자열과 영단어
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/81301
 **Difficulty:** Easy
 
 ```python
 def solution(s):
-    result = []
-    idx = 0
+    english_dic={'0':'zero','1':'one','2':'two','3':'three','4':'four','5':'five','6':'six','7':'seven','8':'eight','9':'nine'}
+    for number, english in english_dic.items():
+        if english in s:
+            s=s.replace(english, number)
+    answer = int(s)
+    return answer
+```
+**Key Point**
+- Made a dictionary for the comparison.
+- Then compared with s and replaced the english into number
 
-    for ch in s:
-        if ch == " ":
-            result.append(ch)
-            idx = 0   # reset index at space
+
+## Problem 47 — 문자열 내 마음대로 정렬하기
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12915
+**Difficulty:** Easy
+
+```python
+def solution(strings, n):
+    def sort_key(word):
+        return (word[n],word)
+    return sorted(strings,key=sort_key)
+```
+**Key Point**
+- The important key point here is to understand that sort has more than one argument
+- Thus we can use key argument to decide what it sorts with
+
+
+## Problem 48 — K번째수
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/42748
+**Difficulty:** Easy
+
+```python
+def solution(array, commands):
+    answer =[]
+    for i in commands:
+        x= sorted(array[(i[0]-1):(i[1])])[(i[2]-1)]
+        answer.append(x)
+    return answer
+```
+**Key Point**
+- Finished the job using slicing indexing and sorted() function
+
+
+## Problem 49 — K번째수
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/42748
+**Difficulty:** Easy
+
+```python
+def solution(numbers):
+    answer = []
+    for ind, i in enumerate(numbers):
+        new_number=numbers[ind+1:]
+        for x in (new_number):
+                answer.append(i+x)
+    answer = sorted(list(set(answer)))
+    return answer
+```
+**Key Point**
+- I had to create a new list that have numbers that are not used currently.
+- Then got the added value appended to the list.
+
+
+## Problem 50 — 가장 가까운 같은 글자
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/142086
+**Difficulty:** Easy
+
+```python
+def solution(s):
+    answer=[]
+    for ind, i in enumerate(s): 
+        if ind ==0:
+            answer.append(-1)
+        elif i in s[:(ind)]:
+            rand=[]
+            for inde, t in enumerate(s[:(ind)]):
+                if t==i:
+                    rand.append(ind-inde)
+            answer.append(min(rand))
         else:
-            if idx % 2 == 0:
-                result.append(ch.upper())
-            else:
-                result.append(ch.lower())
-            idx += 1
-
-    return "".join(result)
-```
-**Key Point**
-- I misread the question and included the spaces when counting words.
-- However, the real question was to count words for each word.
-
-
-## Problem 42 — 삼총사
-🔗 https://school.programmers.co.kr/learn/courses/30/lessons/131705
-**Difficulty:** Easy
-
-```python
-def solution(number):
-    answer = 0
-    n = len(number)
-    for i in range(n):
-        for j in range(i + 1, n):
-            for k in range(j + 1, n):
-                if number[i] + number[j] + number[k] == 0:
-                    answer += 1
+            answer.append(-1)
     return answer
 ```
 **Key Point**
-- each line of for allows you to choose each student without selecting them multiple times.
+- I had to compare each alphabet to the alphabet that comes faster than that one.
+- Then picked the one that has the lowest distance.
 
-
-## Problem 43 — 크기가 작은 부분문자열
-🔗 https://school.programmers.co.kr/learn/courses/30/lessons/147355
-**Difficulty:** Easy
-
-```python
-def solution(t, p):
-    answer = 0  
-    for i in range(len(t)-len(p)+1):
-        number = 0
-        for x in range(len(p)):
-            number += int(t[i+x])*(10**(len(p)-x-1))
-        if number <=int(p):
-            answer +=1
-    return answer
-```
-**Key Point**
-- I did put number =0 outside of for clause which caused an wrong answer.
-- I created set of numbers for t then compared them with p
-
-
-## Problem 44 — 크기가 작은 부분문자열
-🔗 https://school.programmers.co.kr/learn/courses/30/lessons/147355
-**Difficulty:** Easy
-
-```python
-def solution(sizes):
-    xlist=[]
-    ylist=[]
-    for a,b in sizes:
-        if a<= b:
-            a,b = b,a
-        xlist.append(a)
-        ylist.append(b)
-    answer = max(xlist)*max(ylist)
-    return answer
-```
-**Key Point**
-- sorted the list so that each element has [small,big] value.
-- Then got the max value from each list.
-
-
-## Problem 45 — 시저 암호
-🔗 https://school.programmers.co.kr/learn/courses/30/lessons/12926
-**Difficulty:** Easy
-
-```python
-def solution(s, n):
-    lista=[]
-    for i in s:
-        x= ord(i)
-        if i ==" ":
-            lista.append(" ")
-            continue
-        v=0
-        if x<=90:
-            if (x+n)>90:
-                v=64+(x+n-90)
-            else:
-                v= x+n
-        elif x<= 122:
-            if (x+n)>122:
-                v=96+(x+n-122)
-            else:
-                v= x+n
-        lista.append(chr(v))
-    answer = "".join(lista)
-    return answer
-
-```
-**Key Point**
-- I needed to understand how characters are saved as numbers in python
-- ord(char) to turn them into num, chr(number) to change them back into chr
-- a corresponding to 97, A corresponding to 65
