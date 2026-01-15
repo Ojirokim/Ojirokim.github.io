@@ -1,6 +1,6 @@
 ---
 title: "Python Practice – Day 8 (5 Problems)"
-date: 2026-01-14
+date: 2026-01-15
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
 ---
