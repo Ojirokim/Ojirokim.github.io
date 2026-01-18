@@ -1,16 +1,12 @@
-k = 4
-score =[0, 300, 40, 300, 20, 70, 150, 50, 500, 1000]
-def solution(k, score):
-    answer = []
-    thelist=[]
-    for inde, x in enumerate(score):
-        if inde<k:
-            thelist.append(x)
-        else:
-            if min(thelist)<x:
-                thelist.append(x)
-                thelist.sort()
-                thelist=thelist[1:]
-        answer.append(min(thelist))
-    return answer
-solution(k, score)
+def solution(k, m, score):
+    score.sort(reverse=True)
+    price = 0
+    if len(score) % m == 0:
+        z = len(score) // m
+        for x in range(1, (z + 1)):
+            price1 = score[x * m - 1] * m
+            price += price1
+    return price
+
+
+solution(3, 4, [1, 2, 3, 1, 2, 3, 1])
