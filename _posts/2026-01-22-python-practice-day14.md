@@ -41,7 +41,57 @@ def solution(survey, choices):
 **Difficulty:** 4
 
 ```python
-
+def solution(wallpaper):
+    filesy=[]
+    filesx=[]
+    for indy, i in enumerate(wallpaper):
+        for indx,j in enumerate(i):
+            if j == "#":
+                filesx.append(indx+1)
+                filesy.append(indy+1)
+    result = [min(filesy) - 1, min(filesx) - 1, max(filesy), max(filesx)]
+    return result
 ```
 **Key Point**
-- 
+- Created a list to store the x and y coordinates of the files
+- Iterated through the wallpaper to find the coordinates of the files
+- Calculated the minimum and maximum x and y coordinates
+- Returned the result as a list
+
+
+## Problem 71 — 개인정보 수집 유효기간
+🔗 https://school.programmers.co.kr/learn/courses/30/lessons/150370
+**Difficulty:** 4
+
+```python
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+def solution(today, terms, privacies):
+    today = datetime.strptime(today, "%Y.%m.%d").date()
+    answer = []
+    dic = {}
+
+    for term in terms:
+        term_parts = term.split()
+        key = term_parts[0]
+        value = int(term_parts[1])  
+        dic[key] = value
+
+    for idx, privacy in enumerate(privacies, start=1):
+        privacy_parts = privacy.split()
+        date_str = privacy_parts[0]
+        term_type = privacy_parts[1]
+        
+        collection_date = datetime.strptime(date_str, "%Y.%m.%d").date()
+        expiration_date = collection_date + relativedelta(months=dic[term_type])
+        if today >= expiration_date:
+            answer.append(idx)
+    
+    return answer
+```
+**Key Point**
+- Used datetime.strptime to parse the date string into a datetime object
+- Used relativedelta to calculate the expiration date
+- Used a dictionary to store the terms and their validity periods
+- Iterated through the privacies list to check if each privacy is expired
+- Appended the index of expired privacies to the answer list
