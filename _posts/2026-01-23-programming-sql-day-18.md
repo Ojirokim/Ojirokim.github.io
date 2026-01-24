@@ -137,8 +137,53 @@ ORDER BY ct.contest_id;
 - Had to group the tables before joining them in order to get the correct result
 - Used COALESCE() to check for null values.
 
+
 ## Problem 180 — 15 Days of Learning SQL
 🔗 https://www.hackerrank.com/challenges/15-days-of-learning-sql/problem?isFullScreen=true
 **Difficulty:** Level 6
+```python
+SELECT
+  s.submission_date,
+  (
+    SELECT COUNT(DISTINCT s2.hacker_id)
+    FROM Submissions s2
+    WHERE s2.submission_date = s.submission_date
+      AND (
+        SELECT COUNT(DISTINCT s3.submission_date)
+        FROM Submissions s3
+        WHERE s3.hacker_id = s2.hacker_id
+          AND s3.submission_date < s.submission_date
+          AND s3.submission_date >= '2016-03-01'
+      ) = DATEDIFF(s.submission_date, '2016-03-01')
+  ) AS consistent_hackers_count,
+  (
+    SELECT s4.hacker_id
+    FROM Submissions s4
+    WHERE s4.submission_date = s.submission_date
+    GROUP BY s4.hacker_id
+    ORDER BY COUNT(*) DESC, s4.hacker_id ASC
+    LIMIT 1
+  ) AS hacker_id,
 
+  h.name
+FROM (SELECT DISTINCT submission_date
+      FROM Submissions
+      WHERE submission_date BETWEEN '2016-03-01' AND '2016-03-15'
+     ) s
+JOIN Hackers h
+  ON h.hacker_id = (
+    SELECT s4.hacker_id
+    FROM Submissions s4
+    WHERE s4.submission_date = s.submission_date
+    GROUP BY s4.hacker_id
+    ORDER BY COUNT(*) DESC, s4.hacker_id ASC
+    LIMIT 1
+  )
+ORDER BY s.submission_date;
+```
+
+**Key Point**
+- Used DATEDIFF() to get the number of days between two dates
+- Used GROUP BY and ORDER BY to get the correct result
+- Used subqueries to get the consistent hackers count and hacker ID
 
