@@ -1,6 +1,6 @@
 ---
-title: "Python Practice – Day 14 (3 Problems)"
-date: 2026-01-22
+title: "Python Practice – Day 15 (3 Problems)"
+date: 2026-01-23
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
 ---
