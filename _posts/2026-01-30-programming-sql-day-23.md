@@ -1,6 +1,6 @@
 ---
-title: "Programming SQL Practice – Day 21"
-date: 2026-01-28
+title: "Programming SQL Practice – Day 23"
+date: 2026-01-30
 categories: [코드-기술력-자료]
 tags: [sql, programmers, daily-practice]
 ---
