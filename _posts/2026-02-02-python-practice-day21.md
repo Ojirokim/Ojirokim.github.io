@@ -11,7 +11,7 @@ tags: [python, daily-practice]
 - Write 1 key takeaway per problem
 - Due to the increase in difficulty, I will be solving 2 problems per day.
 
-## Problem 81 - 괄호 회전하기
+## Problem 84 - 괄호 회전하기
 🔗 https://school.programmers.co.kr/learn/courses/30/lessons/76502
 **Difficulty:** 4
 
@@ -51,7 +51,7 @@ def solution(s):
 - Use stack list to check if the string is valid
 
 
-## Problem 82 - 연속 부분 수열 합의 개수
+## Problem 85 - 연속 부분 수열 합의 개수
 🔗 https://school.programmers.co.kr/learn/courses/30/lessons/131701
 **Difficulty:** 4
 
