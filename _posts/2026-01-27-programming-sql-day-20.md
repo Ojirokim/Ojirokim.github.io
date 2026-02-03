@@ -8,7 +8,6 @@ tags: [sql, programmers, daily-practice]
 ## 📅 Today’s Goal
 - Solve Coding test SQL problems
 - Focus on correctness and query structure
-A
 ---
 
 ## 문제 1 — “결제 모니터링 대시보드: 주문 상태별 KPI
