@@ -11,7 +11,7 @@ tags: [python, daily-practice]
 - Write 1 key takeaway per problem
 - Due to the increase in difficulty, I will be solving 2 problems per day.
 
-## Problem 88 - 
+## Problem 88 - 행렬의 곱셈
 🔗 https://school.programmers.co.kr/learn/courses/30/lessons/42747
 **Difficulty:** 4
 
@@ -36,7 +36,7 @@ def solution(arr1, arr2):
 - Used 3 for loops to solve the problem
 
 
-## Problem 89 - 
+## Problem 89 - 할인 행사
 🔗 https://school.programmers.co.kr/learn/courses/30/lessons/87390
 **Difficulty:** 4
 ```python
