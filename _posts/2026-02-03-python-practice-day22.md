@@ -1,6 +1,6 @@
 ---
-title: "Python Practice – Day 21 (2 Problems)"
-date: 2026-02-02
+title: "Python Practice – Day 22 (2 Problems)"
+date: 2026-02-03
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
 ---
