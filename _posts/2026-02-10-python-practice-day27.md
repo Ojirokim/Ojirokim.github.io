@@ -81,3 +81,34 @@ def memo_fibonacci(n, memo={}):
     memo[n] = memo_fibonacci(n - 1, memo) + memo_fibonacci(n - 2, memo)
     return memo[n]
 ```
+
+#### 5) Countingsort:
+It counts the number of occurrences of each unique value in an array.
+It then constructs an array containing each unique value as an index.
+
+#### 6) Radixsort:
+It sorts numbers by grouping digits by their individual digits and then sorting within each group using a counting sort.
+Must use a stable sorting algorithm.
+```python
+myArray = [170, 45, 75, 90, 802, 24, 2, 66]
+print("Original array:", myArray)
+radixArray = [[], [], [], [], [], [], [], [], [], []]
+maxVal = max(myArray)
+exp = 1
+
+while maxVal // exp > 0:
+
+    while len(myArray) > 0:
+        val = myArray.pop()
+        radixIndex = (val // exp) % 10
+        radixArray[radixIndex].append(val)
+
+    for bucket in radixArray:
+        while len(bucket) > 0:
+            val = bucket.pop()
+            myArray.append(val)
+
+    exp *= 10
+
+print("Sorted array:", myArray)
+```
