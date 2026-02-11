@@ -1,5 +1,5 @@
 ---
-title: "Python Practice – Day 27 (2 Problems)"
+title: "Python Practice – Day 27"
 date: 2026-02-10
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
