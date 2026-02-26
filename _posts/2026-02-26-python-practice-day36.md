@@ -1,6 +1,6 @@
 ---
-title: "Python Practice – Day 34"
-date: 2026-02-24
+title: "Python Practice – Day 36"
+date: 2026-02-26
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
 ---
