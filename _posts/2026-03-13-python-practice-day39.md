@@ -1,13 +1,13 @@
 ---
-title: "Python Practice – Day 38"
-date: 2026-02-26
+title: "Python Practice – Day 39"
+date: 2026-03-13
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
 ---
 
 ## 📅 Today’s Goal
 - Code Kata related to Data Structure & Algorithm
-- solving 2 problems per day
+- solving 1 problems per day
 ---
 
 ## Problem - Algorithm
