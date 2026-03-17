@@ -1,5 +1,5 @@
 ---
-title: "Python Practice – Day 39"
+title: "Python Practice – Day 40"
 date: 2026-03-16
 categories: [코드-기술력-자료]
 tags: [python, daily-practice]
